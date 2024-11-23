@@ -22,13 +22,10 @@ app.post('/create-checkout-session', async (req, res) => {
       },
       line_items: [
         {
-          // Line item for the one-time fee of $299
-          price_data: {
-            currency: 'usd',
-            product: 'prod_RGcb8Cz8yWXLFZ', // Replace with your product ID
-            unit_amount: 39900, // Amount in cents ($299.00)
-          },
-          quantity: 2,
+          // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+          price: 'price_1QO5MWG645UW4yY1ts3iu1Tm',
+          quantity: 1,
+          
           adjustable_quantity: {
             enabled: true, // Enable adjustable quantity
             minimum: 1,   // Minimum quantity allowed
@@ -91,18 +88,9 @@ app.post('/update-line-items', async (req, res) => {
     await stripe.checkout.sessions.update(checkout_session_id, {
       line_items: [
         {
-          // Line item for the one-time fee of $299
-          price_data: {
-            currency: 'usd',
-            product: 'prod_RGcb8Cz8yWXLFZ', // Replace with your product ID
-            unit_amount: 19900, // Amount in cents ($299.00)
-          },
-          quantity: 12,
-          adjustable_quantity: {
-            enabled: true, // Enable adjustable quantity
-            minimum: 1,   // Minimum quantity allowed
-            maximum: 10,  // Maximum quantity allowed
-          },
+          // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+          price: 'price_1QO5MWG645UW4yY1ts3iu1Tm',
+          quantity: 10,
         },
       ],
     });
